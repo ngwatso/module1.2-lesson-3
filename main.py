@@ -38,3 +38,56 @@ create new dict latters; set a's values to keys and b's values to values.  If a 
 
 # ===============
 
+def csWordPattern(pattern, a):
+    
+    patDict = {}
+    a_2 = a.split(" ")
+    newStr = ""
+    newList = []
+    count = 0
+    
+    if len(a_2) != len(pattern):
+        return False
+    
+    for i, letter in enumerate(pattern):
+        
+        if letter not in patDict:
+            patDict[letter] = a_2[i]
+            
+            count += 1
+            
+        if patDict[letter] not in newList:
+            newList.append(patDict[letter])
+        
+        if i == len(a_2)-1:
+            newStr += patDict[letter]
+        else:
+            newStr += patDict[letter]
+            newStr += " "
+            
+    if count != len(newList):
+        return False
+        
+    if newStr == a:
+        return True
+    else:
+        return False
+    
+    
+    
+'''
+
+U:
+
+pattern = "abba"
+a = "lambda school school lambda"
+output = True
+
+P:
+
+create dictionary patDict; key = pattern("a"), value = a("lambda"); iterate through pattern, putting coresponding value into newStr.  if newStr = a, return True, otherwise, return False
+
+'''
+
+# ===============
+
