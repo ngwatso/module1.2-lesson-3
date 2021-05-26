@@ -91,3 +91,29 @@ create dictionary patDict; key = pattern("a"), value = a("lambda"); iterate thro
 
 # ===============
 
+def csGroupAnagrams(strs):
+    
+    str = set("".join(strs))
+    
+    letters = {}
+    sums = {}
+    newList = []
+    
+    for i, letter in enumerate(str):
+        if letter not in letters:
+            letters[letter] = 2**i
+            
+    for j in strs:
+        sum = 0
+        for l in j:
+            sum += letters[l]
+            
+        if sum not in sums:
+            sums[sum] = [j]
+        else:
+            sums[sum].append(j)
+            
+    for key in sums.values():
+        newList.append(key)
+        
+    return newList
